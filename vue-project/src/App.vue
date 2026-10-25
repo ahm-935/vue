@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Stu from "./components/props/Parent.vue";
 // import Loop from "./components/Loop.vue";
 import { RouterLink, RouterView } from "vue-router";
 </script>
