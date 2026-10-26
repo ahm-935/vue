@@ -1,5 +1,20 @@
 <script setup lang="ts">
-import Pagehead from "../../../components/Pagehead.vue";
+import { api } from "@/api.ts";
+import Pagehead from "@/components/Pagehead.vue";
+
+function getAllProducts() {
+  api
+    .get("/products")
+    .then((res:any) => {
+      console.log(res.data);
+    })
+    .catch((err:any) => {
+      console.error(err);
+    });
+}
+
+getAllProducts();
+
 </script>
 
 <template>
@@ -50,24 +65,24 @@ import Pagehead from "../../../components/Pagehead.vue";
                     class="btn-outline theme-secondary btn-sm"
                     data-bs-toggle="dialog"
                     data-bs-target="#order-1001"
-                  >
-                    View
-                  </button>
+                  ><i class="bi bi-eye"></i>
+                  
+                  </button> &nbsp;
                     <button
                     type="button"
                     class="btn-outline theme-secondary btn-sm"
                     data-bs-toggle="dialog"
                     data-bs-target="#edit-1005"
-                  >
-                    Edit
-                  </button>
+                  ><i class="bi bi-pencil"></i>
+                  
+                  </button> &nbsp;
                   <button
                     type="button"
                     class="btn-outline theme-danger btn-sm"
                     data-bs-toggle="dialog"
                     data-bs-target="#cancel-1005"
-                  >
-                    Delete
+                  ><i class="bi bi-trash"></i>
+                    
                   </button>
                 </td>
               </tr>
