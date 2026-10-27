@@ -18,8 +18,8 @@
             <!-- Bootstrap Menu plugin -->
             <div>
                 <button type="button" class="btn-text user-btn" data-bs-toggle="menu" aria-expanded="false">
-                    <span class="user-badge">SA</span>
-                    <span class="d-none sm:d-inline">Sabbir</span>
+                    <span class="user-badge">A</span>
+                    <span class="d-none sm:d-inline">Admin</span>
                 </button>
                 <div class="menu">
                     <a class="menu-item" href="#">Profile</a>

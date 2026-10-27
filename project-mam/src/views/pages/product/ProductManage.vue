@@ -1,23 +1,29 @@
 <script setup lang="ts">
 import PageHead from "@/components/PageHead.vue";
 import { api, baseUrl } from "@/api.ts";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import type { Product } from "@/interfaces/Product";
 
 let products = ref<Product[]>([]);
-function getAllProducts() {
+let pageLinks = ref<any[]>([]);
+function getAllProducts(url: string) {
   api
-    .get("products")
+    .get(url)
     .then((res: any) => {
-      // console.log(res.data.products.data);
+      console.log(res.data.products);
       products.value = res.data.products.data;
-      console.log(products);
+      pageLinks.value = res.data.products.links;
+      // console.log(products);
     })
     .catch((err: any) => {
       console.log(err.response.data);
     });
 }
-getAllProducts();
+onMounted(() => {
+  getAllProducts('products');
+})
+
+
 </script>
 
 <template>
@@ -103,6 +109,25 @@ getAllProducts();
                 </td>
               </tr>
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3" class="fg-4">10 items out of 100</td>
+                <td colspan="3">
+                  <nav aria-label="Page navigation example">
+                    <ul
+                      class="pagination theme-accent justify-content-end mb-0"
+                    >
+                      <li v-for="link in pageLinks" class="page-item" :class="link.active ? 'active' : ''">
+                        <button class="page-link" :class="link.page == null ? 'disabled' : ''" @click="getAllProducts(link.url)">
+                          <span v-html="link.label"></span>
+                        </button>
+                      </li>
+                     
+                    </ul>
+                  </nav>
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>
