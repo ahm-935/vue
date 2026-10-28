@@ -93,9 +93,9 @@ onMounted(() => {
                     role="group"
                     aria-label="Accent theme example"
                   >
-                    <button type="button" class="btn-outline theme-secondary">
+                    <RouterLink type="button" :to="`/products/${item.id}`" class="btn-outline theme-secondary">
                       <i class="bi bi-eye"></i>
-                    </button>
+                    </RouterLink>
                     <RouterLink
                       to="/products/update"
                       class="btn-outline theme-secondary"

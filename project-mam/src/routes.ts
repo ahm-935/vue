@@ -5,6 +5,7 @@ import UserManage from "./views/pages/user/UserManage.vue"
 import HelloWorld from "./components/HelloWorld.vue";
 import ProductCreate from "./views/pages/product/ProductCreate.vue";
 import ProductUpdate from "./views/pages/product/ProductUpdate.vue";
+import ProductDetails from "./views/pages/product/ProductDetails.vue";
 
 const routes = [
     { path: '/', component: Dashboard },
@@ -13,6 +14,7 @@ const routes = [
     { path: '/products', component: ProductManage },
     { path: '/products/create', component: ProductCreate },
     { path: '/products/update', component: ProductUpdate },
+    { path: '/products/:id', component: ProductDetails },
 ];
 
 export const router = createRouter({

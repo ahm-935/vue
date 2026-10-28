@@ -10,7 +10,7 @@ export interface Product {
     category: string;
     brand_id: number;
     brand: string;
-    reorder_level: number;
+    reorder_level?: number;
     active: boolean;
     created_at?: string;
     updated_at?: string;
