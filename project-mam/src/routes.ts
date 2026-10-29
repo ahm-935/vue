@@ -13,7 +13,7 @@ const routes = [
     { path: '/users-create', component: HelloWorld },
     { path: '/products', component: ProductManage },
     { path: '/products/create', component: ProductCreate },
-    { path: '/products/update', component: ProductUpdate },
+    { path: '/products-edit/:id', component: ProductUpdate },
     { path: '/products/:id', component: ProductDetails },
 ];
 

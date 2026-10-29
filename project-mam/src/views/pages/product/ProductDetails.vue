@@ -63,41 +63,39 @@ onMounted(() => {
                                         <th scope="row" style="width: 35%;">
                                             Product Name
                                         </th>
-                                        <td>Classic Polo Shirt</td>
+                                        <td>{{ item.name }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Price (৳)</th>
-                                        <td>৳1,500.00</td>
+                                        <td>{{ item.price }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Category</th>
-                                        <td>Men's Clothing</td>
+                                        <td>{{ item.category_id }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Brand</th>
-                                        <td>Premium Wear</td>
+                                        <td>{{ item.brand_id }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Quantity in Stock</th>
-                                        <td>25 units</td>
+                                        <td>{{ item.quantity }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Reorder Level</th>
-                                        <td>10 units</td>
+                                        <td>{{ item.reorder_level }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Description</th>
                                         <td>
-                                            Comfortable cotton polo shirt for
-                                            everyday wear.
+                                            {{ item.description }}
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Product Status</th>
                                         <td>
-                                            <span class="badge bg-success">
-                                                Active
-                                            </span>
+                                            <span v-if="item.active" class="badge bg-success">Active</span>
+                                            <span v-else class="badge bg-danger">Inactive</span>
                                         </td>
                                     </tr>
                                 </tbody>

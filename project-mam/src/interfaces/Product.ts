@@ -4,7 +4,7 @@ export interface Product {
     price: number;
     quantity: number;
     image?: File | string| null;
-    image_path?: string;
+    // image_path?: string;
     description?: string;
     category_id: number;
     category: string;
@@ -22,7 +22,7 @@ export const defaultProduct: Product = {
     price: 0,
     quantity: 0,
     image: '',
-    image_path: '',
+    // image_path: '',
     description: '',
     category_id: 0,
     category: '',

@@ -10,7 +10,7 @@ function getAllProducts(url: string) {
   api
     .get(url)
     .then((res: any) => {
-      console.log(res.data.products);
+      // console.log(res.data.products);
       products.value = res.data.products.data;
       pageLinks.value = res.data.products.links;
       // console.log(products);
@@ -23,7 +23,17 @@ onMounted(() => {
   getAllProducts('products');
 })
 
-
+function handleDelete(id: number) {
+  api
+    .delete(`products/${id}`)
+    .then((res: any) => {
+      // console.log(res.data);
+      getAllProducts('products');
+    })
+    .catch((err: any) => {
+      console.log(err.response.data);
+    });
+}
 </script>
 
 <template>
@@ -97,12 +107,12 @@ onMounted(() => {
                       <i class="bi bi-eye"></i>
                     </RouterLink>
                     <RouterLink
-                      to="/products/update"
+                      :to="`/products-edit/${item.id}`"
                       class="btn-outline theme-secondary"
                     >
                       <i class="bi bi-pencil"></i>
                     </RouterLink>
-                    <button type="button" class="btn-outline theme-secondary">
+                    <button type="button" @click="handleDelete(item.id)" class="btn-outline theme-secondary">
                       <i class="bi bi-trash"></i>
                     </button>
                   </div>
