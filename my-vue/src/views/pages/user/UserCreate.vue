@@ -1,0 +1,37 @@
+<template>
+     <main>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h3 mb-0" id="ftitle">User</h1><a href="/users" class="btn btn-outline-secondary"><i
+                    class="bi bi-arrow-left me-1"></i>Back</a>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form id="f" class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-6"><label class="form-label">Full name</label><input type="text" name="name"
+                            class="form-control" required>
+                        <div class="invalid-feedback">Required.</div>
+                    </div>
+                    <div class="col-md-6"><label class="form-label">Email</label><input type="email" name="email"
+                            class="form-control" required>
+                        <div class="invalid-feedback">Enter a valid email.</div>
+                    </div>
+                    <div class="col-md-6"><label class="form-label">Role</label><select name="role" class="form-select"
+                            required>
+                            <option>Admin</option>
+                            <option>Editor</option>
+                            <option>Viewer</option>
+                        </select></div>
+                    <div class="col-md-6"><label class="form-label">Status</label><select name="status"
+                            class="form-select" required>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                            <option>Pending</option>
+                        </select></div>
+                    <div class="col-12 d-flex gap-2"><button class="btn btn-primary"><i
+                                class="bi bi-check-lg me-1"></i>Save</button><a href="users.html"
+                            class="btn btn-light">Cancel</a></div>
+                </form>
+            </div>
+        </div>
+    </main>
+</template>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard | AdminKit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="assets/js/app.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1 class="h3 mb-4">Dashboard</h1>
+        <div class="row g-3 mb-4" id="stats"></div>
+        <div class="row g-3">
+            <div class="col-lg-8">
+                <div class="card h-100">
+                    <div class="card-header">Weekly sales</div>
+                    <div class="card-body pb-5">
+                        <div class="bars" id="bars"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <div class="card-header">Recent activity</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="bi bi-person-plus text-success me-2"></i>New user
+                            registered</li>
+                        <li class="list-group-item"><i class="bi bi-box-seam text-primary me-2"></i>Product stock
+                            updated</li>
+                        <li class="list-group-item"><i class="bi bi-exclamation-circle text-warning me-2"></i>2 products
+                            out of stock</li>
+                        <li class="list-group-item"><i class="bi bi-shield-check text-info me-2"></i>Security scan
+                            passed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-header d-flex justify-content-between">Latest users<a href="users.html" class="small">View
+                    all</a></div>
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>const { Store, SEED, badge, initials, esc } = App, u = Store.load('users', SEED.users), p = Store.load('products', SEED.products);
+        const S = [['Users', u.length, 'people', 'primary'], ['Products', p.length, 'box-seam', 'success'], ['Active users', u.filter(x => x.status === 'Active').length, 'person-check', 'info'], ['Out of stock', p.filter(x => x.stock == 0).length, 'exclamation-triangle', 'danger']];
+        document.getElementById('stats').innerHTML = S.map(s => `<div class="col-sm-6 col-xl-3"><div class="card"><div class="card-body d-flex align-items-center gap-3"><div class="stat-icon bg-${s[3]}-subtle text-${s[3]}-emphasis"><i class="bi bi-${s[2]}"></i></div><div><div class="text-body-secondary small">${s[0]}</div><div class="h4 mb-0">${s[1]}</div></div></div></div></div>`).join('');
+        document.getElementById('bars').innerHTML = [['Mon', 45], ['Tue', 70], ['Wed', 55], ['Thu', 90], ['Fri', 65], ['Sat', 40], ['Sun', 75]].map(d => `<div style="height:${d[1]}%"><small>${d[0]}</small></div>`).join('');
+        document.getElementById('recent').innerHTML = u.slice(-5).reverse().map(x => `<tr><td><span class="avatar me-2">${initials(x.name)}</span>${esc(x.name)}</td><td>${esc(x.email)}</td><td>${badge(x.role)}</td><td>${badge(x.status)}</td></tr>`).join('')</script>
+</body>
+
+</html>

@@ -4,15 +4,18 @@ import './assets/css/style.css';
 import Footer from './views/layouts/Footer.vue';
 import Navbar from './views/layouts/Navbar.vue';
 import Sidebar from './views/layouts/Sidebar.vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 </script>
 
 <template>
-  <Sidebar />
+  <Sidebar v-if="!route.meta.noLayout" />
 
   <div class="main">
 
-    <Navbar />
+    <Navbar v-if="!route.meta.noLayout" />
 
     <main class="content">
       <router-view />
