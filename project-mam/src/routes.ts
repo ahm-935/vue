@@ -21,11 +21,22 @@ const routes = [
     { path: '/products/:id', component: ProductDetails },
     { path: '/count', component: Count },
     { path: '/update-id', component: Update },
-    { path: '/login', component: Login, name: 'Login', meta: { noLayout: true, requiresAuth: false } },
-    { path: '/:pathMatch(.*)', component: Error404, meta: { noLayout: true } },
+    { path: '/login', component: Login, name: 'Login', meta: { noLayout: true, guest: true } },
+    { path: '/:pathMatch(.*)', component: Error404, meta: { noLayout: true, all: true } },
 ];
 
 export const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('vue-token');
+  if (token && to.meta.guest ) {
+    next('/');
+  } else if (!token && !to.meta.guest && !to.meta.all) {
+    next('/login');
+  } else {
+    next();
+  }
 });

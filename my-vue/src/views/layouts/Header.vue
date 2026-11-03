@@ -47,7 +47,7 @@
             <hr class="dropdown-divider" />
           </li>
           <li>
-            <RouterLink class="dropdown-item text-danger" to="/logout" id="logout">Log out</RouterLink>
+            <RouterLink class="dropdown-item text-danger" to="/login" id="logout">Log out</RouterLink>
           </li>
         </ul>
       </div>
